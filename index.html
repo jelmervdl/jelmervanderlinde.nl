@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Jelmer van der Linde</title>
@@ -36,9 +36,8 @@
 		<section class="text-section">
 			<h1>Hi!</h1>
 			<p>I'm Jelmer. I'm almost finished with my master in Artificial Intelligence. It took a while because I have been combining work and study for quite some time now, but Artificial Intelligence is just so much more interesting if you also have the skills to implement it. Some of the fruits of these labours you can find on this website.</p>
-			<p>I tend to make stuff, and most of it ends up somewhere on the internet, either as a real actual website, or as source code on <a href="https://github.com/jelmervdl/">my Github</a> or <a href="https://bitbucket.org/jelmervdl/">my Bitbucket</a> profile.</p>
+			<p>I tend to make stuff, and most of it ends up somewhere on the internet, either as a real actual website, or as source code on <a href="https://github.com/jelmervdl/">my Github</a> or <a href="https://bitbucket.org/jelmervdl/">my Bitbucket</a> profile. You can find a history of my non-public work in <a href="/cv/">my curriculum vitae</a>.</p> 
 			<p>For interesting projects, questions, advice, job offers, or coffee you should contact me at <a href="mailto: Jelmer van der Linde <jelmer@jelmervanderlinde.nl>">jelmer@jelmervanderlinde.nl</a>.</p>
-			<p>By the way, how did I make that header? <a href="#" class="toggle" data-selector="body" data-class="how-does-it-work">Good question</a>.</p>
 		</section>
 
 		<section class="portfolio">
@@ -262,6 +261,8 @@
 			<p><a href="https://github.com/jelmervdl/chrome-rug-ub-proxy">RUG UB Proxy plugin for Google Chrome</a> to easily access papers behind publisher pay-walls, at least if you have login credentials for the University of Groningen</p>
 				
 			<p><a href="https://github.com/jelmervdl/Nostalgy-4-Mail.app">Nostalgy-4-Mail.app</a> is a plugin for Apple's Mail.app to use Gmail keyboard shortcuts. I mostly use it myself for navigation using the j and k keys, and quickly labelling and jumping to labels.</p>
+
+			<p>By the way, how did I make that header? <a href="#header" class="toggle" data-selector="body" data-class="how-does-it-work">Good question</a>.</p>
 		</section>
 
 		<footer>
@@ -395,7 +396,6 @@
 			// Clicking on class toggles toggles the class, eh
 			listen(document.body, 'click', '.toggle[data-selector][data-class]', function(e) {
 				document.querySelector(this.dataset.selector).classList.toggle(this.dataset.class);
-				e.preventDefault();
 			});
 
 			// Start playing videos on slides that become visible
