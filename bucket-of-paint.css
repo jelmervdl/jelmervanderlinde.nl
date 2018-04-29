@@ -123,6 +123,16 @@ figure video {
 
 /* Content */
 
+#content > footer {
+	text-align: center;
+	font-size: 0.8em;
+	color: #999;
+}
+
+#content > footer a {
+	color: inherit;
+}
+
 #content > section {
 	max-width: 900px;
 	margin: 50px auto;
