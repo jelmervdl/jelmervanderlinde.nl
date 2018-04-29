@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Jelmer van der Linde</title>
+		<link href="https://fonts.googleapis.com/css?family=Arvo|Lato:900" rel="stylesheet">
+		<link rel="stylesheet" href="bucket-of-paint.css">
+	</head>
+	<body>
+		<div id="website">
+		<header id="header">
+			<div id="header-clouds">
+				<video width="1920" height="1080" muted autoplay loop playsinline>
+					<source src="img/clouds.mp4" type="video/mp4">
+				</video>
+			</div>
+			<svg id="header-hill" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 1360">
+				<defs>
+					<mask id="hill-mask">
+						<image width="2040" height="1360" xlink:href="img/hill-mask.png"></image>
+					</mask>
+				</defs>
+				<image mask="url(#hill-mask)" width="2040" height="1360" xlink:href="img/photo.jpg"></image>
+			</svg>
+			<img id="header-name" src="img/jelmervanderlinde.svg" alt="">
+			<svg id="header-jelmer" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 1360">
+				<defs>
+					<mask id="jelmer-mask">
+					  <image width="2040" height="1360" xlink:href="img/jelmer-mask.png"></image>
+					</mask>
+				</defs>
+				<image mask="url(#jelmer-mask)" width="2040" height="1360" xlink:href="img/photo.jpg"></image>
+			</svg>
+		</header>
+		<div id="content">
+		<section class="text-section">
+			<h1>Hi!</h1>
+			<p>I'm Jelmer. I'm almost finished with my master in Artificial Intelligence. It took a while because I have been combining work and study for quite some time now, but Artificial Intelligence is just so much more interesting if you also have the skills to implement it. Some of the fruits of these labours you can find on this website.</p>
+			<p>I tend to make stuff, and most of it ends up somewhere on the internet, either as a real actual website, or as source code on <a href="https://github.com/jelmervdl/">my Github</a> or <a href="https://bitbucket.org/jelmervdl/">my Bitbucket</a> profile.</p>
+			<p>For interesting projects, questions, advice, job offers, or coffee you should contact me at <a href="mailto: Jelmer van der Linde <jelmer@jelmervanderlinde.nl>">jelmer@jelmervanderlinde.nl</a>.</p>
+			<p>By the way, how did I make that header? <a href="#" class="toggle" data-selector="body" data-class="how-does-it-work">Good question</a>.</p>
+		</section>
+
+		<section class="portfolio">
+			<h1>Websites</h1>
+
+			<p>I have been making websites since I first found out Netscape came with a program called Composer, which allowed me to make my own websites!</p>
+			
+			<div class="carrousel">
+				<section class="project" id="stemwegwijzer">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/stemwegwijzer.png">
+							<source src="img/portfolio/stemwegwijzer.mp4">
+						</video>
+						<figcaption><a href="http://www.stemwegwijzer.nl/">stemwegwijzer.nl</a></figcaption>
+					</figure>
+
+					<h1>Stemwegwijzer</h1>
+					<p>The stemwegwijzer is a small web-app that points you to the nearest polling station, measured in walking/cycling distance.</p>
+					<p>During the 2017 general elections the app was a first of its kind. We have deployed it for all general and municipal elections since then.</p>
+					<p>Built in 2017 by de Geodienst using <a href="http://leafletjs.com">Leaflet</a>, <a href="http://project-osrm.org">OSRM</a> and <a href="https://github.com/jelmervdl/gopointserver">gopointserver</a>.</p>
+				</section>
+
+				<section class="project" id="tresoar">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/tresoar.png">
+							<source src="img/portfolio/tresoar.mp4">
+						</video>
+						<figcaption><a href="http://www.fryslanuitgebeeld.frl">fryslanuitgebeeld.frl</a></figcaption>
+					</figure>
+					<h1>Fryslân uitgebeeld</h1>
+					<p>Historical maps of Friesland</p>
+					<p>Tresoar, the Frysian archives, stores many old maps from the region in their archives. This website makes these available. It filters them when you zoom in to a specific region, and you can view them together with other old and up-to-date maps.</p>
+					<p>Built in 2016 by de Geodienst using <a href="http://openlayers.org/">OpenLayers</a> and <a href="http://geoserver.org">Geoserver</a>.</p>
+					<p><a href="https://github.com/geodienst/tresoar-fryslan-uitgebeeld">Open source</a>.</p>
+				</section>
+
+				<section class="project" id="beacons">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/beacons.png">
+							<source src="img/portfolio/beacons.mp4">
+						</video>
+						<figcaption><a href="https://geodienst.github.io/lighthousemap/">geodienst.github.io</a></figcaption>
+					</figure>
+					<h1>Beacons at sea</h1>
+					<p>This interactive map shows all the lights at sea that have been mapped in OpenSeaMaps. Each of these lights flickers with their own specific pattern, and their size depicts from how far they can be seen.</p>
+					<p>Experiment with data available in OpenSeaMaps.</p>
+					<p>Built in 2017 by de Geodienst using <a href="http://leafletjs.com">Leaflet</a>, <a href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>.</p>
+					<p><a href="https://github.com/geodienst/lighthousemap">Open source</a></p>
+				</section>
+
+				<section class="project" id="bnaic">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/bnaic.png">
+							<source src="img/portfolio/bnaic.mp4">
+						</video>
+						<figcaption><a href="http://bnaic2017.ai.rug.nl">bnaic2017.ai.rug.nl</a></figcaption>
+					</figure>
+					<h1>BNAIC</h1>
+					<p>Website for the 29th BNAIC conference</p>
+					<p>The 29th Benelux Conference on Artificial Intelligence was organized by the department I was studying and working as a teaching assistant. I volunteered to help with the organisation and as part of that made the website.</p>
+					<p>Built in 2017 using just HTML.</p>
+				</section>
+
+				<section class="project" id="svcover">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/svcover.png">
+							<source src="img/portfolio/svcover.mp4">
+						</video>
+						<figcaption><a href="https://svcover.nl/">svcover.nl</a></figcaption>
+					</figure>
+					<h1>Cover</h1>
+					<p>Main website of study association Cover</p>
+					<p>I maintain the website of study association Cover and from time to time add features, such as a policy-based authorization system, face tagging in the photo books, and mailing list management.</p>
+					<p>Built using PHP, Twig, PostgreSQL and Python.</p>
+				</section>
+
+				<section class="project" id="committees">
+					<figure class="screenshot">
+						<div class="carrousel">
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/committees-abcee-2.jpg" width="1200" height="3915">
+							</div>
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/committees-abcee.jpg" width="1200" height="5910">
+							</div>
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/committees-academic-day.jpg" width="1200" height="3524">
+							</div>
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/committees-excee.jpg" width="1200" height="5131">
+							</div>
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/committees-mxcee.jpg" width="1200" height="5542">
+							</div>
+						</div>
+					</figure>
+					<h1>Various committee websites</h1>
+					<p>Various websites for committees of Cover</p>
+					<p>During my time as a student I was active in various committees of the study association, and for many of their activities I made websites.</p>
+					<p>Built using PHP, HTML, Bootstrap, Semantic UI.</p>
+				</section>
+				
+				<section class="project" id="abi">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/abi.png">
+							<source src="img/portfolio/abi.mp4">
+						</video>
+						<figcaption><a href="http://abi-helpt.nl/">abi-helpt.nl</a></figcaption>
+					</figure>
+					<h1>Technical realisations</h1>
+					<p>Often people come to me with ideas for websites, often with complete designs, sometimes with just sketches. I then realize their project, depending on their needs and abilities using a CMS like WordPress. Incidentally, I have made quite a few WordPress plugins for these projects.</p>
+					<p>Built since 2007 using HTML, CSS, PHP and sometimes WordPress.</p>
+				</section>
+			</div>
+		</section>
+
+		<section class="portfolio">
+			<h1>Research</h1>
+
+			<p>I also worked on a number of projects that are more research oriented. Most of these are implemented as web-apps as well since I'm very familiar with these and they are easy to deploy.</p>
+			
+			<div class="carrousel">
+				<section class="project" id="wiertsema">
+					<figure class="screenshot">
+						<video muted playsinline loop poster="img/portfolio/wiertsema.png">
+							<source src="img/portfolio/wiertsema.mp4">
+						</video>
+					</figure>
+					<h1>Soil horizon interpolation</h1>
+					<p>A company with a large dataset of soil samples wanted to see what the earth looks. The application we developed can make an interpolation of the soil in real-time from their drilling and sounding samples. All you have to do is draw a line on the map and you get a soil horizon, overlaid with data from nearby measurements.</p>
+					<p>Built in 2017 using PostgreSQL, PostGIS and OpenLayers.</p>
+				</section>
+				
+				<section class="project" id="onlanden">
+					<figure class="slide-show">
+						<div class="carrousel">
+							<img src="img/portfolio/onlanden.jpg" alt="Collage of a detected site in AHN and arial photographs">
+							<img src="img/portfolio/onlanden-locations.jpg" alt="Map of locations with possible and known sites">
+						</div>
+					</figure>
+					<h1>Onlanden</h1>
+					<p>Automated analysis of the national elevation dataset for finding buried settlements.</p>
+					<p>I went looking for traces in <abbr title="light detection and ranging">LIDAR</abbr> data using a signal analysis method developed for astronomy. The research project is published as <span class="publication-title">Hoogtepunten en sterrenkunde: het traceren van huisplaatsen in AHN-data</span> (in publication).</span></p>
+					<p>Built in 2017 using C++, Python and QGIS.</p>
+				</section>
+				
+				<section class="project" id="childrens-game">
+					<figure class="screenshot ipad">
+						<video muted playsinline loop poster="img/portfolio/childrens-game.png">
+							<source src="img/portfolio/childrens-game.mp4">
+						</video>
+					</figure>
+					<h1>Children's game</h1>
+					<p>Tablet app for language research with children</p>
+					<p>I developed a very playful application for tablets (for iOS and Android) to perform an experiments to see how children deal with pronouns like <em>his</em>. The characters talk to each other about each other, and the child has to tap the character that was mentioned.</p> 
+					<p>Built in 2012 using HTML, CSS and Java (Android).</p>
+				</section>
+				
+				<section class="project" id="dact">
+					<figure>
+						<img src="img/portfolio/dact.png" alt="Dact interface">
+					</figure>
+					<h1>Dact</h1>
+					<p>Natural language processing tools</p>
+					<p>Dact is a tool for opening and working with corpora, large datasets of annotated texts. It allows you to search through it, export sections of it, and do simple analytics. I developed many of the interface components, and the website.</p>
+					<p>Built in 2010 using C++ and Qt.</p>
+					<p><a href="http://rug-compling.github.io/dact/">Open source</a></p>
+				</section>
+				
+				<section class="project" id="hasl">
+					<figure>
+						<img src="img/portfolio/hasl.png" alt="HASL interface">
+					</figure>
+					<h1>HASL</h1>
+					<p>Understanding arguments</p>
+					<p>For my thesis I developed a parser and grammar for argumentative text with accompanying interface. It allows you to enter a text and see how the claims inside the text support and attack each other. It also allowed you to reverse this process, and generate text.</p>
+					<p>Built in 2017 using Python, Flask and spaCy.</p>
+				</section>
+			
+				<section class="project">
+					<figure class="screenshot">
+						<div class="carrousel">
+							<img src="img/portfolio/expert-system-1.png" alt="">
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/expert-system-2.png" alt="">
+							</div>
+							<div class="full-page-screenshot">
+								<img src="img/portfolio/expert-system-3.png" alt="">
+							</div>
+							<img src="img/portfolio/expert-system-4.png" alt="">
+						</div>
+					</figure>
+					<h1>Expert system</h1>
+					<p>For the course <em>Knowledge Technology Practical</em> I made an inference system that intelligently decides which questions to ask based on rules and questions coded in an XML file. It is really easy to extend and integrate, and some functionality to explain its conclusion.</p>
+					<p>Since then the code has been provided as a starting point for all teams starting the course. It is being used in other courses as well.</p>
+					<p>Built in 2011 using PHP and XML.</p>
+					<p><a href="https://github.com/jelmervdl/kennissysteem">Open source</a></p>
+				</section>
+				
+				<section>
+					<h1>Course work</h1>
+					<p>Most of the programs I made for the courses I completed is available on my Bitbucket and Github accounts. They are not actively maintained, but still serve as examples for others.</p>
+					<ul>
+						<li><a href="https://github.com/jelmervdl/dmas">Traffic simulations</a> (Java)</li>
+						<li><a href="https://bitbucket.org/jelmervdl/scientific-visualisation">Fluid simulation visualisation</a> (C++, Qt)</li>
+						<li><a href="https://github.com/jelmervdl/strategery">Risk-like player using machine learning (TD-learning)</a> (Java)</li>
+						<li><a href="https://bitbucket.org/jelmervdl/handwriting-recognition">Handwriting recognition pipeline for (very) old documents</a> (Python, C++)</li>
+						<li>And of course <a href="https://bitbucket.org/jelmervdl/raytracer">a raytracer</a> (C++)</li>
+					</ul>
+				</section>
+			</div>
+		</section>
+		
+		<section class="portfolio">
+			<h1>Open source</h1>
+		
+			<p>I maintain a few open source projects for myself and others. There is a lot more publicly available on <a href="https://github.com/jelmervdl">my Github</a> and <a href="https://bitbucket.org/jelmervdl">my Bitbucket</a> profiles.</p>
+			
+			<p><a href="https://github.com/jelmervdl/gopointserver">Gopointserver</a>: A simple and fast web server in Go that serves geojson.</p>
+			
+			<p><a href="https://github.com/jelmervdl/chrome-rug-ub-proxy">RUG UB Proxy plugin for Google Chrome</a> to easily access papers behind publisher pay-walls, at least if you have login credentials for the University of Groningen</p>
+				
+			<p><a href="https://github.com/jelmervdl/Nostalgy-4-Mail.app">Nostalgy-4-Mail.app</a> is a plugin for Apple's Mail.app to use Gmail keyboard shortcuts. I mostly use it myself for navigation using the j and k keys, and quickly labelling and jumping to labels.</p>
+		</section>
+
+		<footer>
+			<center>💩</center>
+		</footer>
+		</div>
+		</div>
+		<script>
+			function listen(root, event, selector, callback) {
+				root.addEventListener(event, function(e) {
+					let el = e.target;
+					while (el && el !== root) {
+						if (el.matches(selector))
+							return callback.call(el, e);
+						else
+							el = el.parentElement;
+					}
+				});
+			}
+
+			function createElement(name, attributes = {}, children = []) {
+				const el = document.createElement(name);
+
+				Object.assign(el, attributes);
+
+				children.forEach(child => {
+					if (!(child instanceof Element))
+						child = document.createTextNode(child);
+					el.appendChild(child);
+				});
+
+				return el;
+			}
+
+			function carrousel(root) {
+				const slides = Array.from(root.children);
+
+				const next = createElement('button', {
+					'className': 'next-slide-btn',
+					'title': 'Next slide'
+				}, ['Next']);
+
+				const prev = createElement('button', {
+					'className': 'prev-slide-btn',
+					'title': 'Previous slide'
+				}, ['Previous']);
+
+				const dots = slides.map((slide, index) => {
+					const header = slide.querySelector('h1');
+
+					const dot = createElement('a', {
+						className: 'dot',
+						href: '#' + slide.id,
+						title: header ? header.textContent : 'Slide #' + (index + 1)
+					});
+
+					dot.dataset.slideIndex = index;
+
+					return dot;
+				});
+
+				const dotContainer = createElement('div', {className: 'dots'}, dots);
+
+				root.appendChild(prev);
+
+				root.appendChild(next);
+
+				root.appendChild(dotContainer);
+
+				let currentIndex = null;
+
+				function toggle(index, active) {
+					slides[index].classList.toggle('active', active);
+					dots[index].classList.toggle('active', active);
+				}
+
+				function activate(index) {
+					index = (index + slides.length) % slides.length;
+
+					if (currentIndex !== null) {
+						toggle(currentIndex, false);
+						slides[currentIndex].dispatchEvent(new CustomEvent('hide-slide', {bubbles: true}));
+					}
+
+					currentIndex = index;
+					
+					toggle(currentIndex, true);
+
+					root.style.setProperty('--current-index', index);
+
+					slides[index].dispatchEvent(new CustomEvent('show-slide', {bubbles: true}));
+				}
+
+				next.addEventListener('click', e => {
+					activate(currentIndex + 1);
+				});
+
+				prev.addEventListener('click', e => {
+					activate(currentIndex - 1);
+				});
+
+				dotContainer.addEventListener('click', e => {
+					if (!('slideIndex' in e.target.dataset))
+						return;
+
+					e.preventDefault();
+
+					activate(parseInt(e.target.dataset.slideIndex, 10));
+				})
+
+				activate(0);
+			}
+
+			function screenshot(root) {
+				function set(val) {
+					root.style.setProperty('--scroll-pos', val);
+				}
+
+				root.addEventListener('mousemove', e => {
+					const rect = root.getBoundingClientRect()
+					set((e.pageY - rect.top) / rect.height);
+				});
+
+				root.addEventListener('mouseout', e => {
+					set(1.0)
+				});
+
+				set(1.0);
+			}
+
+			// Clicking on class toggles toggles the class, eh
+			listen(document.body, 'click', '.toggle[data-selector][data-class]', function(e) {
+				document.querySelector(this.dataset.selector).classList.toggle(this.dataset.class);
+				e.preventDefault();
+			});
+
+			// Start playing videos on slides that become visible
+			document.body.addEventListener('show-slide', e => {
+				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+					video.play();
+				});
+			});
+
+			// Reset videos when the slide is hidden again
+			document.body.addEventListener('hide-slide', e => {
+				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+					video.pause();
+					video.currentTime = 0;
+				});
+			});
+
+			// Initialize the custom elements
+			Array.from(document.querySelectorAll('.carrousel')).forEach(carrousel);
+			Array.from(document.querySelectorAll('.full-page-screenshot')).forEach(screenshot);
+		</script>
+	</body>
+</html>
