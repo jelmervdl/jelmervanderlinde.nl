@@ -13,6 +13,10 @@ figure video {
 	width: 100%;
 }
 
+.publication-title {
+	font-style: italic;
+}
+
 /* Header */
 
 #website {
