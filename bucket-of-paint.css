@@ -142,13 +142,13 @@ figure video {
 	margin: 50px auto;
 }
 
-#content > section.text-section {
+.text-section {
 	padding: 50px;
 	background: white;
 	box-shadow:  10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.portfolio > h1 {
+#content > section > h1 {
 	color: white;
 	text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
 	font: 75px/1em 'Lato', sans-serif;
