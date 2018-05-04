@@ -164,6 +164,10 @@ li {
 	margin: 1em 0 0.5em 0;
 }
 
+#contact .text-section {
+	text-align: center;
+}
+
 .carrousel {
 	display: flex;
 	position: relative;
