@@ -13,6 +13,10 @@ figure video {
 	width: 100%;
 }
 
+li {
+	margin: 0.5em 0;
+}
+
 .publication-title {
 	font-style: italic;
 }
@@ -146,6 +150,10 @@ figure video {
 	padding: 50px;
 	background: white;
 	box-shadow:  10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.text-section + .text-section {
+	margin-top: 50px;
 }
 
 #content > section > h1 {
