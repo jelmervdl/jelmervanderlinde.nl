@@ -54,14 +54,24 @@ li {
 	right: 0;
 }
 
+#header-clouds {
+	background: hsl(210, 60%, 35%);
+	bottom: 0;
+}
+
 .preserve3d #header-clouds {
 	transform: translate3d(0, 0, -2px) scale(3);
-	background: hsl(210, 60%, 35%);
+	bottom: auto;
 }
 
 #header-clouds video {
 	width: 100%;
 	height: auto;
+	display: none;
+}
+
+.preserve3d #header-clouds video {
+	display: block;
 }
 
 #header-name {
