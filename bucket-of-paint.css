@@ -289,8 +289,8 @@ li {
 
 .carrousel > section.project figure {
 	width: 100%;
-	max-width: calc(100% - 50px);
-	margin: 0 50px;
+	max-width: 100%;
+	margin: 0;
 	line-height: 0;
 }
 
@@ -300,7 +300,8 @@ li {
 	}
 
 	.carrousel > section.project figure {
-		margin-left: -100%;
+		max-width: calc(100% - 50px);
+		margin: 0 50px 0 -100%;
 		float: left;
 	}
 
