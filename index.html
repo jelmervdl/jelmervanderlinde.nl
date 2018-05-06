@@ -203,7 +203,7 @@
 					</figure>
 					<h1>Onlanden</h1>
 					<p>Automated analysis of the national elevation dataset for finding buried settlements.</p>
-					<p>I went looking for traces in <abbr title="light detection and ranging">LIDAR</abbr> data using a signal analysis method developed for astronomy. The research project is published as <span class="publication-title">Hoogtepunten en sterrenkunde: het traceren van huisplaatsen in AHN-data</span> (in publication).</span></p>
+					<p>I went looking for traces in <abbr title="light detection and ranging">LIDAR</abbr> data using a signal analysis method developed for astronomy. The research project is published as <span class="publication-title">Hoogtepunten en sterrenkunde: het traceren van huisplaatsen in AHN-data</span> (in publication).</p>
 					<p>Built in 2017 using C++, <a href="https://www.python.org">Python</a> and <a href="https://qgis.org/en/site/">QGIS</a>.</p>
 				</section>
 				
@@ -356,16 +356,18 @@
 				});
 			}
 
-			function createElement(name, attributes = {}, children = []) {
+			function createElement(name, attributes, children) {
 				const el = document.createElement(name);
 
-				Object.assign(el, attributes);
+				if (attributes)
+					Object.assign(el, attributes);
 
-				children.forEach(child => {
-					if (!(child instanceof Element))
-						child = document.createTextNode(child);
-					el.appendChild(child);
-				});
+				if (children)
+					children.forEach(child => {
+						if (!(child instanceof Element))
+							child = document.createTextNode(child);
+						el.appendChild(child);
+					});
 
 				return el;
 			}
