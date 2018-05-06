@@ -8,6 +8,10 @@ html, body {
 	background: #eee;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 figure img,
 figure video {
 	width: 100%;
