@@ -6,7 +6,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Arvo|Lato:900" rel="stylesheet">
 		<link rel="stylesheet" href="bucket-of-paint.css">
 	</head>
-	<body>
+	<body class="fancy">
 		<div id="website">
 		<header id="header">
 			<div id="header-clouds">
@@ -342,24 +342,12 @@
 		</footer>
 		</div>
 		</div>
-		<script src="modernizr-custom.js"></script>
 		<script>
-			if (!Array.from) {
-				Array.from = function(iterable) {
-					const elements = Object(iterable);
-					const len = elements.length;
-					const array = new Array(len);
-					for (let i = 0; i < len; ++i)
-						array[i] = elements[i];
-					return array;
-				};
-			}
+			// I'm just going to disable fancy stuff till MS fixes this issue:
+			// https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/14653084/
+			if (document.documentMode || /Edge/.test(navigator.userAgent))
+				document.body.classList.remove('fancy');
 
-			// For IE10 which has no support for toggle's second argument	
-			function toggleClass(el, className, enable) {
-				el.classList[enable ? 'add' : 'remove'](className);
-			}
-			
 			function listen(root, event, selector, callback) {
 				root.addEventListener(event, function(e) {
 					let el = e.target;
@@ -372,18 +360,16 @@
 				});
 			}
 
-			function createElement(name, attributes, children) {
+			function createElement(name, attributes = {}, children = []) {
 				const el = document.createElement(name);
 
-				if (attributes)
-					Object.assign(el, attributes);
+				Object.assign(el, attributes);
 
-				if (children)
-					children.forEach(function(child) {
-						if (!(child instanceof Element))
-							child = document.createTextNode(child);
-						el.appendChild(child);
-					});
+				children.forEach(child => {
+					if (!(child instanceof Element))
+						child = document.createTextNode(child);
+					el.appendChild(child);
+				});
 
 				return el;
 			}
@@ -401,7 +387,7 @@
 					'title': 'Previous slide'
 				}, ['Previous']);
 
-				const dots = slides.map(function(slide, index) {
+				const dots = slides.map((slide, index) => {
 					const header = slide.querySelector('h1');
 
 					const dot = createElement('a', {
@@ -426,8 +412,8 @@
 				let currentIndex = null;
 
 				function toggle(index, active) {
-					toggleClass(slides[index], 'active', active);
-					toggleClass(dots[index], 'active', active);
+					slides[index].classList.toggle('active', active);
+					dots[index].classList.toggle('active', active);
 				}
 
 				function activate(index) {
@@ -447,15 +433,15 @@
 					slides[index].dispatchEvent(new CustomEvent('show-slide', {bubbles: true}));
 				}
 
-				next.addEventListener('click', function(e) {
+				next.addEventListener('click', e => {
 					activate(currentIndex + 1);
 				});
 
-				prev.addEventListener('click', function(e) {
+				prev.addEventListener('click', e => {
 					activate(currentIndex - 1);
 				});
 
-				dotContainer.addEventListener('click', function(e) {
+				dotContainer.addEventListener('click', e => {
 					if (!('slideIndex' in e.target.dataset))
 						return;
 
@@ -472,12 +458,12 @@
 					root.style.setProperty('--scroll-pos', val);
 				}
 
-				root.addEventListener('mousemove', function(e) {
+				root.addEventListener('mousemove', e => {
 					const rect = root.getBoundingClientRect()
 					set((e.pageY - rect.top) / rect.height);
 				});
 
-				root.addEventListener('mouseout', function(e) {
+				root.addEventListener('mouseout', e => {
 					set(1.0)
 				});
 
@@ -490,15 +476,15 @@
 			});
 
 			// Start playing videos on slides that become visible
-			document.body.addEventListener('show-slide', function(e) {
-				Array.from(e.target.querySelectorAll('video')).forEach(function(video) {
+			document.body.addEventListener('show-slide', e => {
+				Array.from(e.target.querySelectorAll('video')).forEach(video => {
 					video.play();
 				});
 			});
 
 			// Reset videos when the slide is hidden again
-			document.body.addEventListener('hide-slide', function(e) {
-				Array.from(e.target.querySelectorAll('video')).forEach(function(video) {
+			document.body.addEventListener('hide-slide', e => {
+				Array.from(e.target.querySelectorAll('video')).forEach(video => {
 					video.pause();
 					video.currentTime = 0;
 				});
