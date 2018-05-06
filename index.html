@@ -344,6 +344,22 @@
 		</div>
 		<script src="modernizr-custom.js"></script>
 		<script>
+			if (!Array.from) {
+				Array.from = function(iterable) {
+					const elements = Object(iterable);
+					const len = elements.length;
+					const array = new Array(len);
+					for (let i = 0; i < len; ++i)
+						array[i] = elements[i];
+					return array;
+				};
+			}
+
+			// For IE10 which has no support for toggle's second argument	
+			function toggleClass(el, className, enable) {
+				el.classList[enable ? 'add' : 'remove'](className);
+			}
+			
 			function listen(root, event, selector, callback) {
 				root.addEventListener(event, function(e) {
 					let el = e.target;
@@ -363,7 +379,7 @@
 					Object.assign(el, attributes);
 
 				if (children)
-					children.forEach(child => {
+					children.forEach(function(child) {
 						if (!(child instanceof Element))
 							child = document.createTextNode(child);
 						el.appendChild(child);
@@ -385,7 +401,7 @@
 					'title': 'Previous slide'
 				}, ['Previous']);
 
-				const dots = slides.map((slide, index) => {
+				const dots = slides.map(function(slide, index) {
 					const header = slide.querySelector('h1');
 
 					const dot = createElement('a', {
@@ -410,8 +426,8 @@
 				let currentIndex = null;
 
 				function toggle(index, active) {
-					slides[index].classList.toggle('active', active);
-					dots[index].classList.toggle('active', active);
+					toggleClass(slides[index], 'active', active);
+					toggleClass(dots[index], 'active', active);
 				}
 
 				function activate(index) {
@@ -431,15 +447,15 @@
 					slides[index].dispatchEvent(new CustomEvent('show-slide', {bubbles: true}));
 				}
 
-				next.addEventListener('click', e => {
+				next.addEventListener('click', function(e) {
 					activate(currentIndex + 1);
 				});
 
-				prev.addEventListener('click', e => {
+				prev.addEventListener('click', function(e) {
 					activate(currentIndex - 1);
 				});
 
-				dotContainer.addEventListener('click', e => {
+				dotContainer.addEventListener('click', function(e) {
 					if (!('slideIndex' in e.target.dataset))
 						return;
 
@@ -456,12 +472,12 @@
 					root.style.setProperty('--scroll-pos', val);
 				}
 
-				root.addEventListener('mousemove', e => {
+				root.addEventListener('mousemove', function(e) {
 					const rect = root.getBoundingClientRect()
 					set((e.pageY - rect.top) / rect.height);
 				});
 
-				root.addEventListener('mouseout', e => {
+				root.addEventListener('mouseout', function(e) {
 					set(1.0)
 				});
 
@@ -474,15 +490,15 @@
 			});
 
 			// Start playing videos on slides that become visible
-			document.body.addEventListener('show-slide', e => {
-				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+			document.body.addEventListener('show-slide', function(e) {
+				Array.from(e.target.querySelectorAll('video')).forEach(function(video) {
 					video.play();
 				});
 			});
 
 			// Reset videos when the slide is hidden again
-			document.body.addEventListener('hide-slide', e => {
-				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+			document.body.addEventListener('hide-slide', function(e) {
+				Array.from(e.target.querySelectorAll('video')).forEach(function(video) {
 					video.pause();
 					video.currentTime = 0;
 				});
