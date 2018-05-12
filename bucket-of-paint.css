@@ -76,6 +76,12 @@ li {
 
 .fancy #header-clouds video {
 	display: block;
+	opacity: 0;
+	transition: opacity ease-in 1s;
+}
+
+.fancy #header-clouds video.playing {
+	opacity: 1;
 }
 
 #header-name {

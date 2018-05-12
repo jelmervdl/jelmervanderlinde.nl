@@ -493,6 +493,17 @@
 			// Initialize the custom elements
 			Array.from(document.querySelectorAll('.carrousel')).forEach(carrousel);
 			Array.from(document.querySelectorAll('.full-page-screenshot')).forEach(screenshot);
+
+			// Hide header clouds until they are loaded in
+			(function(video) {
+				const update = () => {
+					video.classList.toggle('playing', video.readyState >= 2 && !video.paused);
+				};
+				
+				video.addEventListener('playing', update);
+				video.addEventListener('pause', update);
+				update();
+			})(document.querySelector('#header-clouds video'));
 		</script>
 	</body>
 </html>
