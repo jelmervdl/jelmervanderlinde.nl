@@ -30,8 +30,7 @@ li {
 .fancy #website {
 	height: 100vh;
 	overflow: hidden;
-	overflow-y: scroll; /* has to be scroll, not auto */
-	-webkit-overflow-scrolling: touch;
+	overflow-y: auto;
 	perspective: 1px;
 	perspective-origin: 50% 0;
 }
