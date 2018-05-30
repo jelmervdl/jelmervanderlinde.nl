@@ -459,8 +459,8 @@
 				}
 
 				root.addEventListener('mousemove', e => {
-					const rect = root.getBoundingClientRect()
-					set((e.pageY - rect.top) / rect.height);
+					const rect = root.getBoundingClientRect();
+					set((e.pageY - window.scrollY - rect.top) / rect.height);
 				});
 
 				root.addEventListener('mouseout', e => {
