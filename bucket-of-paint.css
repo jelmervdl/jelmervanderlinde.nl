@@ -216,7 +216,7 @@ li {
 		transform ease-out 300ms,
 		opacity ease-out 300ms,
 		box-shadow ease-out 300ms;
-	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px));
+	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px) );
 }
 
 .carrousel > section:not(.active) {
@@ -372,7 +372,7 @@ li {
 	left: 0;
 	width: 100%;
 	height: auto;
-	transform: translateY(calc((1.0 - var(--scroll-pos)) * -100%));
+	transform: translateY(calc((1.0 - var(--scroll-pos)) * -100%) );
 }
 
 .screenshot .full-page-screenshot::after {
@@ -384,7 +384,7 @@ li {
 	height: 10%;
 	background: rgba(0, 0, 0, 0.4);
 	border-radius: 2px;
-	transform: translateY(calc((1.0 - var(--scroll-pos)) * 900%));
+	transform: translateY(calc((1.0 - var(--scroll-pos)) * 900%) );
 }
 
 /* Slide show */
