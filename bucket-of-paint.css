@@ -8,9 +8,17 @@ html, body {
 	background: #eee;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 figure img,
 figure video {
 	width: 100%;
+}
+
+li {
+	margin: 0.5em 0;
 }
 
 .publication-title {
@@ -19,7 +27,7 @@ figure video {
 
 /* Header */
 
-#website {
+.fancy #website {
 	height: 100vh;
 	overflow: hidden;
 	overflow-y: auto;
@@ -27,16 +35,19 @@ figure video {
 	perspective-origin: 50% 0;
 }
 
-#header {
+.fancy #header {
 	position: relative;
 	width: 100%;
 	padding-top: 70%;
-	margin-bottom: -35%;
 	transform-style: preserve-3d;
 	transition: transform ease-in-out 500ms, padding-top ease-in-out 500ms;
 }
 
 #content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 35vw;
 	transform-style: preserve-3d;
 }
 
@@ -48,30 +59,54 @@ figure video {
 }
 
 #header-clouds {
-	transform: translate3d(0, 0, -2px) scale(3);
 	background: hsl(210, 60%, 35%);
+	bottom: 0;
+}
+
+.fancy #header-clouds {
+	transform: translate3d(0, 0, -2px) scale(3);
+	bottom: auto;
 }
 
 #header-clouds video {
 	width: 100%;
 	height: auto;
+	display: none;
+}
+
+.fancy #header-clouds video {
+	display: block;
+	opacity: 0;
+	transition: opacity ease-in 1s;
+}
+
+.fancy #header-clouds video.playing {
+	opacity: 1;
 }
 
 #header-name {
+	top: 25vw;
+	width: 80%;
+	margin: 0 auto;
 	/*mix-blend-mode: exclusion;*/
+}
+
+.fancy #header-name {
+	top: 0;
+	width: auto;
 	/*filter: brightness(calc(1.0 - var(--scroll-pos) * 100.0));*/
 	transform: translate3d(0, 0, -1.25px) scale(2) translateY(200%);
 }
 
-#header-hill {
+.fancy #header-hill {
 	transform: translateZ(-1.5px) scale(2.5) translateY(8.75%);
 }
 
-#header-jelmer {
+.fancy #header-jelmer {
 	transform: translateZ(-0.75px) scale(1.75);
 }
 
-#header::after {
+.fancy #header::after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -81,24 +116,24 @@ figure video {
 	transform: translate3d(0, 0, -0.75px) scale(1.75) translateY(43%);
 }
 
-.how-does-it-work #website {
+.preserve3d.how-does-it-work #website {
 	perspective: 1.0px;
 }
 
-.how-does-it-work #header {
+.preserve3d.how-does-it-work #header {
 	transform: translate3d(25%, 50%, -0.75px) rotate3d(0, 1, 0, 0.02deg);
 	padding-top: 100%;
 }
 
-.how-does-it-work #header > * {
+.preserve3d.how-does-it-work #header > * {
 	border: 1px solid black;
 }
 
-.how-does-it-work #header::after {
+.preserve3d.how-does-it-work #header::after {
 	display: none;
 }
 
-.how-does-it-work #header > svg > defs > mask > image {
+.preserve3d.how-does-it-work #header > svg > defs > mask > image {
 	opacity: 0.5;
 }
 
@@ -142,18 +177,26 @@ figure video {
 	margin: 50px auto;
 }
 
-#content > section.text-section {
+.text-section {
 	padding: 50px;
 	background: white;
 	box-shadow:  10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.portfolio > h1 {
+.text-section + .text-section {
+	margin-top: 50px;
+}
+
+#content > section > h1 {
 	color: white;
 	text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
 	font: 75px/1em 'Lato', sans-serif;
 	font-variant: all-petite-caps;
 	margin: 1em 0 0.5em 0;
+}
+
+#contact .text-section {
+	text-align: center;
 }
 
 .carrousel {
@@ -169,11 +212,14 @@ figure video {
 	flex: 0 0 100%;
 	margin-right: 50px;
 	padding: 50px;
+	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px));
+}
+
+.fancy .carrousel > section {
 	transition:
 		transform ease-out 300ms,
 		opacity ease-out 300ms,
 		box-shadow ease-out 300ms;
-	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px));
 }
 
 .carrousel > section:not(.active) {
@@ -252,8 +298,8 @@ figure video {
 
 .carrousel > section.project figure {
 	width: 100%;
-	max-width: calc(100% - 50px);
-	margin: 0 50px;
+	max-width: 100%;
+	margin: 0;
 	line-height: 0;
 }
 
@@ -263,7 +309,8 @@ figure video {
 	}
 
 	.carrousel > section.project figure {
-		margin-left: -100%;
+		max-width: calc(100% - 50px);
+		margin: 0 50px 0 -100%;
 		float: left;
 	}
 
