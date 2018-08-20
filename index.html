@@ -455,10 +455,6 @@
 
 					let motion = null;
 
-					function direction(x) {
-						return x > 0 ? 1 : -1;
-					}
-
 					function reset(clientX, direction) {
 						motion = {
 							time: new Date().getTime(),
@@ -475,16 +471,16 @@
 							return e.changedTouches[0].clientX;
 					}
 
-					const setDragOffset = offset => {
+					function setDragOffset(offset) {
 						root.style.setProperty('--drag-offset', offset);
 					}
 
 					const onMove = e => {
 						if (motion.direction === undefined)
-							motion.direction = direction(motion.clientX - clientX(e));
+							motion.direction = Math.sign(motion.clientX - clientX(e));
 
 						// If we flipped direction, reset the velocity tracking
-						else if (direction(motion.clientX - clientX(e)) != motion.direction)
+						else if (Math.sign(motion.clientX - clientX(e)) != motion.direction)
 							reset(clientX(e), -motion.direction);
 						
 						setDragOffset(clientX(e) - drag.clientX);
@@ -496,10 +492,10 @@
 						const momentum = (motion.clientX - clientX(e)) / (new Date().getTime() - motion.time);
 						
 						if (Math.abs(distance) > 0.5 * slide.offsetWidth)
-							activate(currentIndex + direction(distance));
+							activate(currentIndex + Math.sign(distance));
 
 						else if (Math.abs(momentum) > 1)
-							activate(currentIndex + direction(momentum));
+							activate(currentIndex + Math.sign(momentum));
 
 						drag = null;
 						setDragOffset(0);
