@@ -202,6 +202,8 @@ li {
 .carrousel {
 	display: flex;
 	position: relative;
+	--current-index: 0;
+	--drag-offset: 0;
 }
 
 .carrousel > section {
@@ -212,10 +214,10 @@ li {
 	flex: 0 0 100%;
 	margin-right: 50px;
 	padding: 50px;
-	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px));
+	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px + var(--drag-offset) * 1px));
 }
 
-.fancy .carrousel > section {
+.fancy .carrousel:not(.is-dragging) > section {
 	transition:
 		transform ease-out 300ms,
 		opacity ease-out 300ms,

@@ -448,7 +448,96 @@
 					e.preventDefault();
 
 					activate(parseInt(e.target.dataset.slideIndex, 10));
-				})
+				});
+
+				slides.forEach(slide => {
+					let drag = null;
+
+					let motion = null;
+
+					function direction(x) {
+						return x > 0 ? 1 : -1;
+					}
+
+					function reset(clientX, direction) {
+						motion = {
+							time: new Date().getTime(),
+							clientX: clientX,
+							direction: direction
+						};
+					}
+
+					function clientX(e) {
+						if ('clientX' in e)
+							return e.clientX;
+
+						if ('changedTouches' in e)
+							return e.changedTouches[0].clientX;
+					}
+
+					const setDragOffset = offset => {
+						root.style.setProperty('--drag-offset', offset);
+					}
+
+					const onMove = e => {
+						if (motion.direction === undefined)
+							motion.direction = direction(motion.clientX - clientX(e));
+
+						// If we flipped direction, reset the velocity tracking
+						else if (direction(motion.clientX - clientX(e)) != motion.direction)
+							reset(clientX(e), -motion.direction);
+						
+						setDragOffset(clientX(e) - drag.clientX);
+					};
+
+					const onUp = e => {
+						const distance = drag.clientX - clientX(e);
+
+						const momentum = (motion.clientX - clientX(e)) / (new Date().getTime() - motion.time);
+						
+						if (Math.abs(distance) > 0.5 * slide.offsetWidth)
+							activate(currentIndex + direction(distance));
+
+						else if (Math.abs(momentum) > 1)
+							activate(currentIndex + direction(momentum));
+
+						drag = null;
+						setDragOffset(0);
+						
+						root.classList.remove('is-dragging');
+						root.style.setProperty('--drag-offset', 0);
+						
+						window.removeEventListener('mousemove', onMove);
+						window.removeEventListener('mouseup', onUp);
+
+						window.removeEventListener('touchmove', onMove);
+						window.removeEventListener('touchend', onUp);
+					}
+
+					const onDown = e => {
+						if (e.target.matches('input, select, a'))
+							return;
+
+						e.preventDefault();
+
+						drag = {
+							clientX: clientX(e)
+						};
+
+						reset(clientX(e));
+
+						root.classList.add('is-dragging');
+						
+						window.addEventListener('mousemove', onMove);
+						window.addEventListener('mouseup', onUp);
+
+						window.addEventListener('touchmove', onMove);
+						window.addEventListener('touchend', onUp);
+					};
+
+					slide.addEventListener('mousedown', onDown);
+					slide.addEventListener('touchstart', onDown);
+				});
 
 				activate(0);
 			}
