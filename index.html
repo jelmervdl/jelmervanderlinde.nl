@@ -344,11 +344,6 @@
 		</div>
 		</div>
 		<script>
-			// I'm just going to disable fancy stuff till MS fixes this issue:
-			// https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/14653084/
-			if (document.documentMode || /Edge/.test(navigator.userAgent))
-				document.body.classList.remove('fancy');
-
 			function listen(root, event, selector, callback) {
 				root.addEventListener(event, function(e) {
 					let el = e.target;
@@ -561,22 +556,22 @@
 
 			// Start playing videos on slides that become visible
 			document.body.addEventListener('show-slide', e => {
-				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+				e.target.querySelectorAll('video').forEach(video => {
 					video.play();
 				});
 			});
 
 			// Reset videos when the slide is hidden again
 			document.body.addEventListener('hide-slide', e => {
-				Array.from(e.target.querySelectorAll('video')).forEach(video => {
+				e.target.querySelectorAll('video').forEach(video => {
 					video.pause();
 					video.currentTime = 0;
 				});
 			});
 
 			// Initialize the custom elements
-			Array.from(document.querySelectorAll('.carrousel')).forEach(carrousel);
-			Array.from(document.querySelectorAll('.full-page-screenshot')).forEach(screenshot);
+			document.querySelectorAll('.carrousel').forEach(carrousel);
+			document.querySelectorAll('.full-page-screenshot').forEach(screenshot);
 
 			// Hide header clouds until they are loaded in
 			(function(video) {
