@@ -446,7 +446,7 @@
 					activate(parseInt(e.target.dataset.slideIndex, 10));
 				});
 
-				slides.forEach(slide => {
+				slides.forEach((slide, slideIndex) => {
 					let drag = null;
 
 					let motion = null;
@@ -470,6 +470,10 @@
 					function setDragOffset(offset) {
 						root.style.setProperty('--drag-offset', offset);
 					}
+
+					const onFocus = e => {
+						activate(slideIndex);
+					};
 
 					const onMove = e => {
 						if (motion.direction === undefined)
@@ -524,7 +528,8 @@
 						window.addEventListener('touchmove', onMove);
 						window.addEventListener('touchend', onUp);
 					};
-
+					
+					slide.addEventListener('focusin', onFocus);
 					slide.addEventListener('mousedown', onDown);
 					slide.addEventListener('touchstart', onDown);
 				});
