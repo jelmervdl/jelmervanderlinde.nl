@@ -301,6 +301,16 @@ li {
 	right: 15px;
 }
 
+/* Move focus outline to the slide */
+
+.carrousel:focus {
+	outline: none;
+}
+
+.carrousel:focus > .active {
+	outline: auto;
+}
+
 /* Projects */
 
 .carrousel > section.project figure {

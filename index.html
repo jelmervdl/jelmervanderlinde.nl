@@ -370,17 +370,46 @@
 				return el;
 			}
 
+			function moveFocusDown(el) {
+				while (el = (el.nextElementSibling || el.parentElement.nextElementSibling))
+					if (moveFocusInside(el))
+						return true;
+				
+				return false;
+			}
+
+			function moveFocusUp(el) {
+				while (el = (el.previousElementSibling || el.parentElement.previousElementSibling))
+					if (moveFocusInside(el))
+						return true;
+				
+				return false;
+			}
+
+			function moveFocusInside(root) {
+				const el = root.querySelector('a, button, *[tabindex]');
+				
+				if (el) {
+					el.focus();
+					return true;
+				}
+
+				return false;
+			}
+
 			function carrousel(root) {
 				const slides = Array.from(root.children);
 
 				const next = createElement('button', {
-					'className': 'next-slide-btn',
-					'title': 'Next slide'
+					className: 'next-slide-btn',
+					title: 'Next slide',
+					tabIndex: -1
 				}, ['Next']);
 
 				const prev = createElement('button', {
-					'className': 'prev-slide-btn',
-					'title': 'Previous slide'
+					className: 'prev-slide-btn',
+					title: 'Previous slide',
+					tabIndex: -1
 				}, ['Previous']);
 
 				const dots = slides.map((slide, index) => {
@@ -389,7 +418,8 @@
 					const dot = createElement('a', {
 						className: 'dot',
 						href: '#' + slide.id,
-						title: header ? header.textContent : 'Slide #' + (index + 1)
+						title: header ? header.textContent : 'Slide #' + (index + 1),
+						tabIndex: -1 // Pressing [tab] 5 times + [enter] is slower than [right arrow] 5 times.
 					});
 
 					dot.dataset.slideIndex = index;
@@ -404,6 +434,8 @@
 				root.appendChild(next);
 
 				root.appendChild(dotContainer);
+
+				root.tabIndex = 0;
 
 				let currentIndex = null;
 
@@ -428,6 +460,44 @@
 
 					slides[index].dispatchEvent(new CustomEvent('show-slide', {bubbles: true}));
 				}
+
+				root.addEventListener('keydown', e => {
+					// Only listen to key events when it is the carrousel container
+					// that is focused, not something inside.
+					if (e.target !== root)
+						return;
+
+					switch (e.key) {
+						case 'ArrowLeft':
+							activate(currentIndex - 1);
+							e.preventDefault();
+							break;
+
+						case 'ArrowRight':
+							activate(currentIndex + 1);
+							e.preventDefault();
+							break;
+
+						case 'ArrowDown':
+							if (moveFocusDown(root))
+								e.preventDefault();
+							break;
+
+						case 'ArrowUp':
+							if (moveFocusUp(root))
+								e.preventDefault();
+							break;
+
+						case 'Tab':
+							if (moveFocusInside(slides[currentIndex]))
+								e.preventDefault();
+							break;
+
+						// TODO: right now once you moved focus to inside a slide
+						// there is no way to get out of it, i.e. shift-tab goes
+						// to the previous slide.
+					}
+				});
 
 				next.addEventListener('click', e => {
 					activate(currentIndex + 1);
