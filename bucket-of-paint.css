@@ -217,6 +217,11 @@ li {
 	transform: translateX(calc(var(--current-index) * -100% + var(--current-index) * -50px + var(--drag-offset) * 1px));
 }
 
+.carrousel.is-dragging {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
 .fancy .carrousel:not(.is-dragging) > section {
 	transition:
 		transform ease-out 300ms,

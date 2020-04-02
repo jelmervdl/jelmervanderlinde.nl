@@ -483,6 +483,7 @@
 						else if (Math.sign(motion.clientX - clientX(e)) != motion.direction)
 							reset(clientX(e), -motion.direction);
 						
+						root.classList.add('is-dragging');
 						setDragOffset(clientX(e) - drag.clientX);
 					};
 
@@ -498,11 +499,9 @@
 							activate(currentIndex + Math.sign(momentum));
 
 						drag = null;
-						setDragOffset(0);
-						
 						root.classList.remove('is-dragging');
-						root.style.setProperty('--drag-offset', 0);
-						
+						setDragOffset(0);
+
 						window.removeEventListener('mousemove', onMove);
 						window.removeEventListener('mouseup', onUp);
 
@@ -520,8 +519,6 @@
 
 						reset(clientX(e));
 
-						root.classList.add('is-dragging');
-						
 						window.addEventListener('mousemove', onMove);
 						window.addEventListener('mouseup', onUp);
 
