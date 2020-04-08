@@ -387,7 +387,7 @@
 			}
 
 			function moveFocusInside(el) {
-				if (el = root.querySelector('a, button, *[tabindex]'))
+				if (el = el.querySelector('a, button, *[tabindex]'))
 					return el.focus() || true; // el.focus() -> always undefined hence or.
 
 				return false;
