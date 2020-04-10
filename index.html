@@ -6,30 +6,30 @@
 		<link href="https://fonts.googleapis.com/css?family=Arvo|Lato:900" rel="stylesheet">
 		<link rel="stylesheet" href="bucket-of-paint.css">
 	</head>
-	<body class="fancy">
+	<body>
 		<div id="website">
-		<header id="header">
+		<header id="header" style="--window-scroll-pos:0.0;">
 			<div id="header-clouds">
 				<video width="1920" height="1080" muted autoplay loop playsinline>
 					<source src="img/clouds.mp4" type="video/mp4">
 				</video>
 			</div>
-			<svg id="header-hill" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 1360">
+			<svg id="header-hill" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 850">
 				<defs>
 					<mask id="hill-mask">
-						<image width="2040" height="1360" xlink:href="img/hill-mask.png"></image>
+						<image width="2040" height="850" xlink:href="img/hill-mask.png"></image>
 					</mask>
 				</defs>
-				<image mask="url(#hill-mask)" width="2040" height="1360" xlink:href="img/photo.jpg"></image>
+				<image mask="url(#hill-mask)" width="2040" height="850" xlink:href="img/photo.jpg"></image>
 			</svg>
 			<img id="header-name" src="img/jelmervanderlinde.svg" alt="">
-			<svg id="header-jelmer" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 1360">
+			<svg id="header-jelmer" preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2040 850">
 				<defs>
 					<mask id="jelmer-mask">
-					  <image width="2040" height="1360" xlink:href="img/jelmer-mask.png"></image>
+					  <image width="2040" height="850" xlink:href="img/jelmer-mask.png"></image>
 					</mask>
 				</defs>
-				<image mask="url(#jelmer-mask)" width="2040" height="1360" xlink:href="img/photo.jpg"></image>
+				<image mask="url(#jelmer-mask)" width="2040" height="850" xlink:href="img/photo.jpg"></image>
 			</svg>
 		</header>
 		<div id="content">
@@ -641,6 +641,14 @@
 			// Initialize the custom elements
 			document.querySelectorAll('.carrousel').forEach(carrousel);
 			document.querySelectorAll('.full-page-screenshot').forEach(screenshot);
+
+			// Update parallax css effects
+			document.querySelectorAll('[style*=--window-scroll-pos]').forEach(el => {
+				window.addEventListener('scroll', e => requestAnimationFrame(() => {
+					const fraction = Math.min(Math.max(window.scrollY / el.offsetHeight, -1), 1);
+					el.style.setProperty('--window-scroll-pos', fraction);
+				}), {passive: true});
+			});
 
 			// Hide header clouds until they are loaded in
 			(function(video) {
