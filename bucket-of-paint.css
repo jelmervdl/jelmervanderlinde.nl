@@ -63,10 +63,6 @@ li {
 	transition: opacity ease-in 1s;
 }
 
-#header-clouds video.playing {
-	opacity: 1;
-}
-
 #header-name {
 	top: 15vw;
 	width: 100%;
@@ -75,20 +71,26 @@ li {
 	margin: 0 auto;
 }
 
-#header-jelmer {
-	transform: translateY(calc(var(--window-scroll-pos) * 10vw));
-}
+@media (prefers-reduced-motion: no-preference) {
+	#header-clouds video.playing {
+		opacity: 1;
+	}
 
-#header-name {
-	transform: translateY(calc(var(--window-scroll-pos) * 13vw));
-}
+	#header-jelmer {
+		transform: translateY(calc(var(--window-scroll-pos) * 10vw));
+	}
 
-#header-hill {
-	transform: translateY(calc(var(--window-scroll-pos) * 15vw));
-}
+	#header-name {
+		transform: translateY(calc(var(--window-scroll-pos) * 13vw));
+	}
 
-#header-clouds {
-	transform: translateY(calc(var(--window-scroll-pos) * 25vw));
+	#header-hill {
+		transform: translateY(calc(var(--window-scroll-pos) * 15vw));
+	}
+
+	#header-clouds {
+		transform: translateY(calc(var(--window-scroll-pos) * 25vw));
+	}
 }
 
 /* Content */
@@ -153,11 +155,13 @@ li {
 	user-select: none;
 }
 
-.carrousel:not(.is-dragging) > section {
-	transition:
-		transform ease-out 300ms,
-		opacity ease-out 300ms,
-		box-shadow ease-out 300ms;
+@media (prefers-reduced-motion: no-preference) {
+	.carrousel:not(.is-dragging) > section {
+		transition:
+			transform ease-out 300ms,
+			opacity ease-out 300ms,
+			box-shadow ease-out 300ms;
+	}
 }
 
 .carrousel > section:not(.active) {
