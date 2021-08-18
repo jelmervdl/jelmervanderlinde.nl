@@ -1,3 +1,48 @@
+:root {
+	--background:  #eee;
+	--text-background:  #fff;
+	--text-foreground:  #000;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #000;
+		--text-background: #333;
+		--text-foreground: white;
+	}
+
+	a {
+		color: #66a8ff;
+	}
+
+	#header-clouds {
+		filter: grayscale() brightness(0.2);
+	}
+
+	#header-hill {
+		filter: grayscale() brightness(0.5);
+	}
+
+	#header-jelmer {
+		filter: grayscale() brightness(0.4);
+	}
+
+	#header-name {
+		z-index: 1;
+	}
+
+	#header::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+		background: radial-gradient(ellipse at top, transparent, black);
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -5,7 +50,8 @@
 html, body {
 	margin: 0;
 	font: 16px/24px 'Arvo', serif;
-	background: #eee;
+	background: var(--background);
+	color: var(--text-foreground);
 }
 
 figure img,
@@ -112,7 +158,7 @@ li {
 
 .text-section {
 	padding: 50px;
-	background: white;
+	background: var(--text-background);
 	box-shadow:  10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -142,7 +188,7 @@ li {
 .carrousel > section {
 	box-sizing: border-box;
 	max-width: 100%;
-	background: white;
+	background: var(--text-background);
 	box-shadow:  10px 10px 0 rgba(0, 0, 0, 0.2);
 	flex: 0 0 100%;
 	margin-right: 50px;
@@ -187,7 +233,7 @@ li {
 }
 
 .carrousel .dots .dot.active {
-	background: #000;
+	background: var(--text-foreground);
 }
 
 .carrousel .prev-slide-btn,
@@ -298,7 +344,6 @@ li {
     left: 0;
     right: 0;
     text-align: center;
-    background: white;
     line-height: 16px;
     margin: 0 80px;
     border-radius: 2px;
