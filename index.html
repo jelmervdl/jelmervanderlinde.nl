@@ -192,9 +192,23 @@
 		<section class="portfolio">
 			<h1>Research</h1>
 
-			<p>I also worked on a number of projects that are more research oriented. Most of these are implemented as web-apps as well since I'm very familiar with this architecture and they are easy to deploy.</p>
+			<p>I worked on a number of projects that are more research oriented. Most of these are implemented as web-apps as well since I'm very familiar with this architecture and they are easy to deploy.</p>
 			
 			<div class="carrousel">
+				<section class="project" id="translate-locally">
+					<h1>translateLocally</h1>
+					<p><a href="https://translatelocally.com/">translateLocally</a> is a desktop application for text translation. Unlike cloud providers, all processing is performed locally and your text remains privately on your computer.</p>
+					<p>Additionally, I developed a <a href="https://github.com/jelmervdl/firefox-translations">browser extension</a> that hook into translateLocally and its libraries to do website translation. Parts of it power <a href="https://addons.mozilla.org/en-US/firefox/addon/firefox-translations/">Mozilla's Firefox translation add-on</a>.</p>
+					<p>Built using C++, <a href="http://qt.io">Qt</a>, WebAssembly, and <a href="https://marian-nmt.github.io">Marian</a></p>
+				</section>
+
+				<section class="project" id="corpora">
+					<h1>Parallel corpora</h1>
+					<p>I worked on distilling parallel corpora for a large variety of languages for the <a href="https://paracrawl.eu">ParaCrawl</a> and <a href="https://europat.net">EuroPat</a> projects.</p>
+					<p>Parallel corpora are used as training data for machine translation systems.</p>
+					<p>In practice this meant writing efficient tooling, contributing to tools like <a href="https://github.com/bitextor/bitextor">Bitextor</a>, and coming up with processing strategies to process more than a petabyte of data on multiple <abbr title="High performance compute">HPC</abbr> clusters.</p>
+				</section>
+
 				<section class="project" id="wiertsema">
 					<figure class="screenshot">
 						<video muted playsinline loop poster="img/portfolio/wiertsema.png" preload="none">
