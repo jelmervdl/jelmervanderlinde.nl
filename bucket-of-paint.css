@@ -394,6 +394,7 @@ figure .carrousel {
 }
 
 figure .carrousel > img,
+figure .carrousel > video,
 figure .carrousel > .full-page-screenshot {
 	display: none;
 }
