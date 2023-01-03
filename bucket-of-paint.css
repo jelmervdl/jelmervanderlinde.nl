@@ -2,6 +2,7 @@
 	--background:  #eee;
 	--text-background:  #fff;
 	--text-foreground:  #000;
+	color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
